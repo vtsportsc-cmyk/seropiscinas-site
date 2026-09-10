@@ -188,12 +188,21 @@ button{font:inherit;color:inherit}
 .header-inner{height:var(--header-h);display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
 
 .brand{display:flex;align-items:center;gap:11px;margin-right:auto;flex:none}
-.brand-logo-img{
-  height:48px;width:auto;display:block;object-fit:contain;
-  transition:opacity .25s ease,transform .4s var(--ease-out),box-shadow .4s var(--ease-out);
+.brand-mark{
+  position:relative;flex:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;padding:0;border-radius:15px;overflow:hidden;
+  background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(230,246,252,.75));
+  border:1px solid rgba(0,168,232,.32);
+  box-shadow:0 8px 20px rgba(0,168,232,.22),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .4s var(--ease-out),box-shadow .4s var(--ease-out);
 }
-.brand:hover .brand-logo-img{transform:translateY(-2px) scale(1.02)}
-.brand-logo-img:hover{opacity:.92}
+.brand:hover .brand-mark{transform:translateY(-2px) rotate(-4deg);box-shadow:0 14px 28px rgba(0,168,232,.34)}
+.brand-logo-img{width:100%;height:100%;object-fit:cover}
+
+.brand-text{display:flex;flex-direction:column;line-height:1.22;min-width:0}
+.brand-text strong{font-family:var(--font-head);font-size:1rem;font-weight:800;letter-spacing:-.015em;white-space:nowrap}
+.brand-text small{font-size:.69rem;font-weight:700;letter-spacing:.05em;color:var(--muted);white-space:nowrap;text-transform:uppercase}
 
 .nav{display:flex;align-items:center;gap:1px;flex-wrap:nowrap}
 .nav-link{
@@ -564,9 +573,9 @@ button{font:inherit;color:inherit}
 .footer a{transition:color .25s ease}
 .footer a:hover{color:var(--blue-light)}
 .footer-grid{display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:40px}
-.footer-brand{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-.footer-logo{width:min(220px,100%);height:auto;object-fit:contain;border-radius:12px;background:#fff;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.footer-brand-text strong{display:block;font-family:var(--font-head);color:#fff;font-size:1.1rem;line-height:1.3;letter-spacing:-.015em}
+.footer-brand{display:flex;align-items:flex-start;gap:14px}
+.footer-logo{width:54px;height:54px;border-radius:15px;object-fit:cover;border:2px solid rgba(0,168,232,.4)}
+.footer-brand strong{display:block;font-family:var(--font-head);color:#fff;font-size:1.1rem;line-height:1.3;letter-spacing:-.015em}
 .footer-brand small{color:#7a8aaa;font-size:.85rem}
 .footer-social{margin-top:13px;font-size:.93rem;line-height:2}
 .footer-social a{border-bottom:1px solid rgba(0,168,232,.3);padding-bottom:1px}
@@ -816,14 +825,17 @@ button{font:inherit;color:inherit}
 
 @media (max-width:600px){
   .btn-header{display:none}
-  .brand-logo-img{height:40px}
+  .brand-mark{width:42px;height:42px}
+  .brand-text small{display:block;font-size:.62rem}
   .chat{right:10px;width:min(96vw,384px);max-height:min(76dvh,620px)}
   .msg{max-width:96%}
   .quick-replies{padding-left:0}
 }
 
 @media (max-width:420px){
-  .brand-logo-img{height:34px}
+  .brand-mark{width:40px;height:40px;padding:0;border-radius:13px}
+  .brand-text small{display:none}
+  .brand-text strong{font-size:.85rem}
   .btn-header{padding:8px 11px;font-size:.71rem}
   .nav-toggle{width:40px;height:40px;padding:9px}
   .fab-label{display:none}
