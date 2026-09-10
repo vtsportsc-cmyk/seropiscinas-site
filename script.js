@@ -123,6 +123,28 @@
     revealEls.forEach(function (el) { revealObserver.observe(el); });
   }
 
+  /* ---- Toggle de som dos vídeos ---- */
+  document.querySelectorAll("[data-sound-toggle]").forEach(function (btn) {
+    var wrap = btn.closest("[data-video-wrap]");
+    var video = wrap ? wrap.querySelector("video") : null;
+    if (!video) return;
+
+    btn.addEventListener("click", function () {
+      if (video.muted) {
+        video.muted = false;
+        btn.textContent = "🔊";
+        btn.classList.add("on");
+        btn.setAttribute("aria-label", "Desativar som do vídeo");
+        if (video.paused) video.play();
+      } else {
+        video.muted = true;
+        btn.textContent = "🔇";
+        btn.classList.remove("on");
+        btn.setAttribute("aria-label", "Ativar som do vídeo");
+      }
+    });
+  });
+
   /* ---- Ano corrente no rodapé ---- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
